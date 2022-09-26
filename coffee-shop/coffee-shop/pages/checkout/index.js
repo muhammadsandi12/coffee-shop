@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux"
 import { AddPayment } from "../../redux/action/Payment" 
 import { useState } from "react"
 
-export default function checkout() {
+export default function Checkout() {
     const { data } = useSelector(state => state.getCheckout)
+    const user = useSelector(state => state.getUsers)
+    console.log(user.data)
     const payment = useSelector(state => state.addPayment)
     const dispatch = useDispatch()
     const [subTotal,setSubtotal] = useState(data.product_price * data.count)
@@ -92,15 +94,15 @@ export default function checkout() {
                                         Delivery
                                     </div>
                                     <div className=" ml-2 text-xl">to</div>
-                                    <div className=" ml-2 text-xl">
-                                        <input type="text" className="outline-none" placeholder="input name"/>
+                                    <div className=" ml-2 text-xl w-full px-2">
+                                        <input type="text" defaultValue={user.data.display_name} className="outline-none w-full" placeholder="input name"/>
                                     </div>
                                 </div>
                                 <div className="border-b-2  border-gray-200 py-2">
-                                <input type="text" className="outline-none" placeholder="input address" />
+                                <input  defaultValue={user.data.delivery_address}  type="text" className="outline-none" placeholder="input address" />
                                 </div>
                                 <div className="py-2" >
-                                <input type="text" className="outline-none" placeholder="input no handphone"/>
+                                <input defaultValue={user.data.phone_number} type="text" className="outline-none" placeholder="input no handphone"/>
                                 </div>
                             </div>
                             <div className="mt-10 text-2xl  text-white font-bold ">

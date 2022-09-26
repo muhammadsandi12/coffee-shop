@@ -3,7 +3,8 @@ import Nav from "./Nav"
 import NavRight from "./NavRight"
 export default function Navbar(){
     return(
-        <div className=" w-10/12 mx-auto">
+      <div className=" mb-4">
+        <div className=" w-10/12  mx-auto">
         <div className='flex   items-center py-5  '>
           <div className='w-3/12 '>
             <Logo/> 
@@ -16,5 +17,7 @@ export default function Navbar(){
           </div>
         </div>
         </div>
+
+      </div>
     )
 }

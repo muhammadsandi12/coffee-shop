@@ -6,9 +6,9 @@ import { useState } from 'react'
 import Choose from '../../../components/Choose'
 import { GetCheckoutSuccess } from '../../../redux/action/Checkout'
 import { useDispatch } from 'react-redux'
+import Swal from 'sweetalert2'
 
-
-export default function details({ data }) {
+export default function Details({ data }) {
   const initial = 0
   const [count, setCount] = useState(initial)
   const [sizeProduct, setSizeProduct] = useState()
@@ -17,19 +17,36 @@ export default function details({ data }) {
   const [delivery, setDelivery] = useState('Dine In')
   const [time, setTime] = useState()
   const router = useRouter()
+  console.log(booking[0], 'ini booking')
   const dispatch = useDispatch()
   const handleCheckout = (item) =>{
-      dispatch(GetCheckoutSuccess({
-      product_id: item.product_id,
-      product_image: item.product_image,
-      product_name: item.product_name,
-      product_price: item.product_price,
-      count: count,
-      size: booking[0],
-      delivery: delivery,
-          time: time
-    }))
-    router.push("/checkout")
+      if(count === initial){
+        Swal.fire({
+          icon:"error",
+          title:"",
+          text:"jumlah pesanan tidak boleh kosong"
+        })
+
+      }else if(booking[0] === undefined){
+        Swal.fire({
+          icon:"error",
+          title:"",
+          text:"silahkan pilih size terlebih dahulu"
+        })
+      }else{
+
+        dispatch(GetCheckoutSuccess({
+        product_id: item.product_id,
+        product_image: item.product_image,
+        product_name: item.product_name,
+        product_price: item.product_price,
+        count: count,
+        size: booking[0],
+        delivery: delivery,
+            time: time
+      }))
+      router.push("/checkout")
+      }
     
    
   }
@@ -66,7 +83,7 @@ export default function details({ data }) {
                   <div className='flex justify-evenly mt-8'>
                     {data?.size?.results?.map((size, index) => {
                       return (
-                        <div key={index} className="bg-[#FFBA33] w-[70px] h-[70px] flex justify-center items-center rounded-full" onClick={() =>{
+                        <div key={index} className={booking[0] === size.ket ? "bg-[#6A4029] text-white font-semibold w-[70px] h-[70px] flex justify-center items-center rounded-full":"bg-[#FFBA33] w-[70px] h-[70px] flex justify-center items-center font-semibold rounded-full"} onClick={() =>{
                           if (booking.find((sizeProduct) => sizeProduct === size.ket)) {
                             setBooking(prev => prev.filter((sizeProduct) => sizeProduct !== size.ket))  
                             &  setChart(prev => prev.filter((sizeProduct) => sizeProduct.size !== size.ket))

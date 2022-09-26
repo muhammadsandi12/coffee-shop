@@ -8,7 +8,7 @@ export default function Hero() {
                     <p className="text-white w-5/12 text-xl leading-7 font-semibold mt-5">
                         We provide high quality beans, good taste, and healthy meals made by love just for you. Start your day with us for a bigger smile!
                     </p>
-                    <button className="bg-[#FFBA33] font-bold text-base py-4 px-20 text-[#6A4029] mt-6 rounded-lg">Get Started</button>
+                    <button  className="bg-[#FFBA33] font-bold text-base py-4 px-20 text-[#6A4029] mt-6 rounded-lg">Get Started</button>
                     <div className="w-10/12 mt-36 h-[200px]  shadow-sm shadow-gray-400 mx-auto flex  bg-white justify-between  rounded-md  absolute">
                         <div className="flex  py-10 px-10 ">
                             <div className="">

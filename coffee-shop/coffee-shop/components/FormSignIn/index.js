@@ -3,22 +3,27 @@ import Link from "next/link";
 import Button from "../Navbar/Button";
 import Logo from "../Navbar/Logo";
 import swal from 'sweetalert2'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios'
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthLogin } from "../../redux/action/Auth";
 export default function FormSignIn() {
+    const login = useSelector(state=> state.login)
+    console.log(login, 'ini hasil login')
+    const dispatch = useDispatch()
     const router = useRouter()
     const [formLogin, setFormLogin] = useState({})
     const handleLogin = (e) =>{
         e.preventDefault()
-        axios({
-            method:'POST',
-            url:`api/auth/login`,
-            data: formLogin
-        }).then((res) =>{
-        console.log(res)  
-        })
+        dispatch(AuthLogin(formLogin))
     }
+
+    useEffect(() =>{
+        if(login.isLogin === true){
+            router.replace("/")
+        }
+    },[login])
 
     return (
         <div className="container  mx-auto">
@@ -36,14 +41,14 @@ export default function FormSignIn() {
                     <form onSubmit={handleLogin} >
                         <div className="mt-4">
                             <label className="text-gray-500 font-bold text-xl" >Email Address: </label>
-                            <input className="w-full border rounded-2xl py-4 px-2 mt-1" type={"email"} placeholder="Enter your email address" onChange={(e) => setFormLogin(prevData =>({
+                            <input className="w-full outline-none border rounded-2xl py-4 px-2 mt-1" type={"email"} placeholder="Enter your email address" onChange={(e) => setFormLogin(prevData =>({
                                 ...prevData,
                                 email: e.target.value
                             }))}/>
                         </div>
                         <div className="mt-4">
                             <label className="text-gray-500 font-bold text-xl" >Password: </label>
-                            <input className="w-full border rounded-2xl py-4 px-2 mt-1" type={"password"} placeholder="Enter your email address" onChange={(e) => setFormLogin(prevData =>({
+                            <input className="w-full border outline-none rounded-2xl py-4 px-2 mt-1" type={"password"} placeholder="Enter your email address" onChange={(e) => setFormLogin(prevData =>({
                                 ...prevData,
                                 password: e.target.value
                             }))}/>

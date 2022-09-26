@@ -21,6 +21,12 @@ module.exports = {
         ".bg-form":{
           "background-image": "url('/bg-form.png')"
 
+        },
+        ".bg-profile":{
+          "background-image": "url('/bg-profile.png')",
+          "background-size": "cover",  
+          "background-position": "bottom",
+          "background-repeat": "no-repeat"        
         }
       };
       addUtilities(utilities)
