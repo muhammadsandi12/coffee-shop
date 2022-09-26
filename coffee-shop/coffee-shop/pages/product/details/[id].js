@@ -56,7 +56,7 @@ export default function Details({ data }) {
     <Layout title="product" withNavbar={true}>
       {data?.data?.map((item ,index) => {
         return (
-          <div key={index} className='bg-gray-100 '>
+          <div  className='bg-gray-100' key={index}>
             <div className='flex flex-col ' >
               <div className='container flex mx-auto pt-20'>
                 <div className='flex flex-col w-5/12'>

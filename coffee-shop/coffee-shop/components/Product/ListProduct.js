@@ -18,15 +18,14 @@ export default function ListProduct({ categoryId }) {
         })
 
     }, [categoryId])
-
     return (
         <>
             <div className="flex flex-wrap  w-10/12 mt-4 mx-auto">
                 {listProduct?.map((item,index) => {
                     return (
                         <>
-                            <Link  href={`/product/details/${item?.product_id}`} >
-                                <div key={index} className="mb-10 bg-[#fff] rounded-xl shadow-black	shadow-sm py-3  w-3/12 mr-7 text-center">
+                            <Link  href={`/product/details/${item.product_id}`}  key={item.product_id} >
+                                <div key={item.product_id} className="mb-10 bg-[#fff] rounded-xl shadow-black	shadow-sm py-3  w-3/12 mr-7 text-center">
                                     <div key={index}>
                                         <Image className="rounded-full" src={`http://localhost:1111/upload/${item.product_image}`} width={100} height={100} />
                                     </div>
