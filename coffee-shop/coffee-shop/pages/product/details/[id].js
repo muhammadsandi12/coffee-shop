@@ -63,6 +63,7 @@ export default function Details({ data }) {
                   <div className='flex justify-center mt-14   w-full'>
                     <Image className="rounded-full" src={`http://localhost:1111/upload/${item.product_image}`} width={350} height={350} />
                   </div>
+                  <div></div>
                   <div className='flex justify-center'>
                     <h1 className='text-7xl font-black mt-6 '>{item.product_name}</h1>
                   </div>
