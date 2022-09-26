@@ -12,7 +12,7 @@ const rootReducers = combineReducers({
     login: Login,
     register: Register,
     getUsers: GetUsers,
-    updateUsers: updateUsers
+    
    
 })
 

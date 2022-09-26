@@ -54,9 +54,9 @@ export default function Details({ data }) {
   
   return (
     <Layout title="product" withNavbar={true}>
-      {data?.data?.map((item) => {
+      {data?.data?.map((item ,index) => {
         return (
-          <div className='bg-gray-100 '>
+          <div key={index} className='bg-gray-100 '>
             <div className='flex flex-col ' >
               <div className='container flex mx-auto pt-20'>
                 <div className='flex flex-col w-5/12'>
@@ -146,9 +146,9 @@ export default function Details({ data }) {
                       <div className='text-2xl font-bold '>
                         {item.product_name}
                       </div>
-                      <div className=' text-left'>{booking?.map((item) =>{
+                      <div className=' text-left'>{booking?.map((item, index) =>{
                         return(
-                          <div> {item}</div>
+                          <div key={index}> {item}</div>
                         )
                       })}</div>
                     </div>

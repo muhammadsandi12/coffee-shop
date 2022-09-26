@@ -50,7 +50,7 @@ export default function Profile() {
                                         <div className="mt-4">
 
                                             <input onChange={imageChange} className="hidden" id="file" type="file" accept="image/*" />
-                                            <label for='file' className="bg-[#FFBA33] text-[#6A4029] text-base font-bold px-7 mb-4 py-2 rounded-lg">
+                                            <label htmlFor="file" className="bg-[#FFBA33] text-[#6A4029] text-base font-bold px-7 mb-4 py-2 rounded-lg">
                                                 Choose a photo
                                             </label>
 
